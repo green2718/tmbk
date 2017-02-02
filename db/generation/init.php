@@ -1,8 +1,5 @@
 <?php
 // Need to be included in a file with a PDO Object on var $conn, and the DB name listed
-include '../conf.php';
-$val_revision = 1;
-
 $creation_revision_table = "CREATE TABLE $revision_table (
   id INT(6) UNSIGNED PRIMARY KEY,
   date TIMESTAMP
@@ -33,4 +30,5 @@ echo "Assocation table created\n";
 
 $save_revision = "INSERT INTO $revision_table VALUES ($val_revision, NOW())";
 $conn -> exec($save_revision);
+echo "Init OK\n";
 ?>
