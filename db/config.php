@@ -1,10 +1,5 @@
 <?php
-// Connection parameters
-$servername = "localhost";
-$dbname = "dbname";
-$username = "unsername";
-$password = "P@ssw0rd?";
-
+include 'logindb.php';
 // Tables name
 $revision_table = "revision";
 $kitten_table = "kitten";
