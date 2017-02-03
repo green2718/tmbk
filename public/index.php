@@ -22,4 +22,8 @@
   <p>
     Maintenant, à vous de jouer&nbsp;!
   </p>
+  <div id="kittyArea">
+    <?php include "select_kitten.php"; ?>
+  </div>
+  <script src="tmbk.js"></script>
 </body>
