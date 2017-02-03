@@ -1,5 +1,9 @@
 <?php
-session_start();
+if ($_SESSION = NULL) 
+{
+  session_start();
+}
+
 include "../db/config.php";
 //include "../db/db_functions.php";
 function selectKittens($conn, $kitten_table) 
