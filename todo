@@ -1,6 +1,7 @@
 OK Communication avec BDD
 OK Génération BDD (script php)
-Selection d'une paire de chaton
-Gestion du retour
+En cours Selection d'une paire de chaton (br topic/select_kitten)
+En cours Gestion du retour (br topic/gestion_retour)
+CSS
 Temps mini entre deux requêtes
 Log des sessions en bdd
