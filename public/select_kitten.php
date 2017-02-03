@@ -24,7 +24,7 @@ try
   foreach($kittens as $kitten)
   {
     echo "<div>";
-    echo "<a href='selected.php?kitten=$kitten[id]'>";
+    echo "<a class='kitty' data='$kitten[id]'>";
     echo "<img src='$kitten[link]' alt='Chaton mignon'/>";
     echo "</a></div>";
     array_push($_SESSION["kittens"], $kitten['id']);
