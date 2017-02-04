@@ -37,7 +37,7 @@ function addKitten($url, $conn, $kitten_table, $assoc_table)
   //echo "Kitten added!\n";
 }
 
-function selectKittens($conn, $kitten_table, $assoc_table) {
+function selectKittens($conn, $kitten_table) {
   $nbKittens = 0;
   $min = -1;
   $reqMin = $conn -> prepare("SELECT MIN(nb_call) FROM $kitten_table WHERE (nb_call > :min);");
@@ -85,11 +85,11 @@ function saveKittens($kitten, $kitten_array, $conn, $kitten_table, $assoc_table)
   $updateAssoc .= " WHERE(id1=" . min($kitten_array) . " AND id2=" . max($kitten_array) . ");";
   $conn -> query($updateAssoc);
 
-  //$updateKitty = $conn -> prepare("UDPATE $kitten_table SET nb_call = nb_call + 1 WHERE id=:kitty;");
-  //$updateKitty -> bindParam(':kitty', $kitty);
-  //foreach($kitten_array as $kitty)
-  //{
-  //  $updateKitty -> execute();
-  //}
+  $updateKitty = $conn -> prepare("UDPATE $kitten_table SET nb_call = nb_call + 1 WHERE id=:kitty;");
+  $updateKitty -> bindParam(':kitty', $kitty);
+  foreach($kitten_array as $kitty)
+  {
+    $updateKitty -> execute();
+  }
 }
 ?>
