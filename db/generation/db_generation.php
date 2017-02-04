@@ -18,4 +18,5 @@ catch(PDOException $e)
 {
   echo "SQL Error:" . $e->getMessage();
 }
+$conn = NULL;
 ?>
