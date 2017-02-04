@@ -26,6 +26,9 @@ function setEventA() {
 					document.getElementById("kittyArea").innerHTML = this.responseText;
 					setEventA();
 				}
+				else if (this.readyState == 4 && this.status == 429) {
+					alert("Doucement ! Prenez le temps d'admirer ces chatons !");
+				}
 				reqLock = false;
 			};
 			connec.open('GET','selected.php?kitten='+this.getAttribute('data'), true);

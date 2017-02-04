@@ -13,6 +13,8 @@ try
     array_push($_SESSION["kittens"], $kitten['id']);
   }
   echo "<a id='reset' href='javascript:void(0);' >Je ne peux me décider&nbsp;!</a>";
+  $_SESSION["send"] = true;
+  $_SESSION["timeReq"] = microtime();
 }
 catch(PDOException $e)
 {
