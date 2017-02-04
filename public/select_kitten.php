@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION = NULL) 
+if (!isset($_SESSION)) 
 {
   session_start();
 }
@@ -15,7 +15,6 @@ function selectKittens($conn, $kitten_table)
     $aa[rand(5,9)]
   );
 }
-echo '<div>';
 try
 {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -24,11 +23,12 @@ try
   foreach($kittens as $kitten)
   {
     echo "<div>";
-    echo "<a class='kitty' data='$kitten[id]'>";
+    echo "<a href='' class='kitty' data='$kitten[id]'>";
     echo "<img src='$kitten[link]' alt='Chaton mignon'/>";
     echo "</a></div>";
     array_push($_SESSION["kittens"], $kitten['id']);
   }
+  echo "<a href='' id='reset'>Je ne peux me décider&nbsp;!</a>";
 }
 catch(PDOException $e)
 {
@@ -38,5 +38,4 @@ catch(PDOException $e)
   echo "<img src='http://www.catgifpage.com/gifs/$rndKitten.gif' alt='chaton désolé'>";
   echo "<p>Désolé pour la peine causée ! =(</p>";
 }
-echo '</div>';
 ?>
