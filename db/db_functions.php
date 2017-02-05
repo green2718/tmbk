@@ -76,13 +76,15 @@ function selectKittens($conn, $kitten_table) {
 function saveKittens($kitten, $kitten_array, $conn, $kitten_table, $assoc_table)
 {
   $updateAssoc = "UPDATE $assoc_table SET ";
-  if (min($kitten_array) == $kitten)
+  if ($kitten == false)
   {
+    $updateAssoc .= "equal = equal + 1";
+  } elseif (min($kitten_array) == $kitten) {
     $updateAssoc .= "val1 = val1 + 1";
   } else {
     $updateAssoc .= "val2 = val2 + 1";
   }
-  $updateAssoc .= " WHERE(id1=" . min($kitten_array) . " AND id2=" . max($kitten_array) . ");";
+  $updateAssoc .= ", nb_select = nb_select + 1 WHERE(id1=" . min($kitten_array) . " AND id2=" . max($kitten_array) . ");";
   $conn -> query($updateAssoc);
 
   $updateCall = "UPDATE $kitten_table SET nb_call = nb_call + 1 WHERE (";
@@ -91,5 +93,10 @@ function saveKittens($kitten, $kitten_array, $conn, $kitten_table, $assoc_table)
     $updateCall .=" id=".$kitty." OR";
   }
   $conn -> exec($updateCall." false);");
+}
+
+function saveEqual($kitten_array, $conn, $kitten_table, $assoc_table)
+{
+    saveKittens(false, $kitten_array, $conn, $kitten_table, $assoc_table);
 }
 ?>

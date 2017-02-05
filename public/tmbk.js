@@ -12,7 +12,7 @@ function setEventA() {
 			}
 			reqLock = false;
 		};
-		connec.open('GET','select_kitten.php', true);
+		connec.open('GET','select_kitten.php?equal=1', true);
 		connec.send();
 	});
 	[].slice.call(document.getElementsByClassName("kitty")).forEach(function(elmt) {
