@@ -12,6 +12,21 @@ try
     $val_revision = 1;
     include 'init.php';
   }
+
+  $current_revision = $conn -> query("SELECT id FROM $revision_table;") -> fetchColumn();
+
+  if ($current_revision < 2)
+  {
+    $val_revision = 2;
+    include 'rev2.php';
+  }
+
+  if ($val_revision != $current_revision)
+  {
+    $conn -> exec("DELETE FROM $revision_table;");
+    $save_revision = "INSERT INTO $revision_table VALUES ($val_revision, NOW())";
+    $conn -> exec($save_revision);
+  }
   echo "Generation OK!\n";
 }
 catch(PDOException $e)
